@@ -1,10 +1,9 @@
-# DeepVariant as a Nextflow pipeline
+# DeepVariant as a Nextflow pipeline, AWS Batch enabled
 
 A Nextflow pipeline for running the [Google DeepVariant variant caller](https://github.com/google/deepvariant).
 
-At [Lifebit](https://lifebit.ai/?utm_campaign=documentation&utm_source=github&utm_medium=web) we developed this pipeline to ease and reduce cost for variant calling analyses. You can test the pipeline through our Platform: [Deploit](https://deploit.lifebit.ai/app/home). This allows you to run Deepvariant over cloud in a matter of a couple of clicks: and for single users our service is completely free! 
-
-Read more about DeepVariant in Nextflow in our [Blog post](https://blog.lifebit.ai/post/deepvariant/?utm_campaign=documentation&utm_source=github&utm_medium=web)
+Credit goes to Lifebit for setting up this NextFlow pipeline. Edits for AWS Batch by Sander Bervoets.
+Read more about DeepVariant in Nextflow in Lifebits [Blog post](https://blog.lifebit.ai/post/deepvariant/?utm_campaign=documentation&utm_source=github&utm_medium=web)
 
 
 ## What is DeepVariant and why in Nextflow?
@@ -30,7 +29,7 @@ https://research.googleblog.com/2017/12/deepvariant-highly-accurate-genomes.html
 
 ## Test Run 
 
-Locally or through the Deploit platform run: 
+Locally or through Lifebits Deploit platform run
 
 ```
 git clone https://github.com/lifebit-ai/DeepVariant
@@ -41,6 +40,14 @@ nextflow run main.nf --test
 In this way, the **prepared data** on repository (under test data) are used for running DeepVariant and you can find the produced VCF files in the folder "RESULTS-DeepVariant".
 
 The input of the pipeline can be eventually changed as explained in the "Input parameters" section.
+
+## Test Run on AWS Batch
+
+If you want to try the testing module do the following:
+
+```
+nextflow run Biocentric/DeepVariantNF --test -w s3://your/bucket/
+```
 
 ## Quick Start
 
