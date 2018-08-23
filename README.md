@@ -3,6 +3,9 @@
 A Nextflow pipeline for running the [Google DeepVariant variant caller](https://github.com/google/deepvariant).
 
 Credit goes to Lifebit for setting up this NextFlow pipeline. Edits for AWS Batch by Sander Bervoets.
+The nextflow config file has been modified to allocated a large amount of extra memory to the processes later in the workflow, to match the available cores in the ECS instances.
+Be sure to make a custom AMI to provide this memory.
+
 Read more about DeepVariant in Nextflow in Lifebits [Blog post](https://blog.lifebit.ai/post/deepvariant/?utm_campaign=documentation&utm_source=github&utm_medium=web)
 
 
@@ -43,11 +46,13 @@ The input of the pipeline can be eventually changed as explained in the "Input p
 
 ## Test Run on AWS Batch
 
-If you want to try the testing module do the following:
+If you want to  run the test module through Nextflow on AWS Batch, be sure to edit the nextflow.config file to match your Batch specifics.
+The following command can be executed from a node without docker, only Java, Nextflow and AWS CLI+credentials will do the trick:
 
 ```
 nextflow run Biocentric/DeepVariantNF --test -w s3://your/bucket/
 ```
+
 
 ## Quick Start
 
